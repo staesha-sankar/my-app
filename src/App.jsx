@@ -1,122 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+// Summary
+// One component per file
+// 1. Select
+// 2. Right click
+// 3. Refactor
+// 4. Move to new file
+// 5. Save all file
+// 6. After saving only then goto next component
 
-function App() {
-  const [count, setCount] = useState(0)
+// Dont move multiple components at same time
+
+import { useState } from "react";
+import "./index.css";
+import { MovieList } from "./MovieList";
+import { UserList } from "./UserList";
+// Default export (only one per file)
+export default function App() {
+  const names = ["Staesha", "Lauren", "Zulu", "Nolo"];
+  // Array Strings -> Array of JSX (Transform)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    // JSX starts
+    <div className="App">
+      {/* <UserList /> */}
+      {/*<MovieList />*/}
+      <Counter />
+    </div>
+    // JSX ends
+  );
 }
 
-export default App
+//React reacts to special variables: Hook variables
+//Hook functions start with the word use eg useState, useEffect, useReducer, useContext
+
+//C = f(state) - State change, component re-render, UI change
+function Counter() {
+  //let [state,setState] = useState(initialValue)
+  //state refers to current value of the variable
+  //setState is a function which updates the value of the variable
+  let [like, setLike] = useState(0);
+  let [dislike, setDislike] = useState(0);
+  return (
+    <div>
+      <button
+        //click - onClick - setLike - update states = State changes rerender
+        onClick={() => {
+          setLike(like + 1);
+        }}
+      >
+        👍 Like
+      </button>
+      <h2>{like}</h2>
+
+      <button
+        onClick={() => {
+          setDislike(dislike + 1);
+        }}
+      >
+        👎 Dislike
+      </button>
+      <h2>{dislike}</h2>
+
+      <progress value={like} max={like + dislike}></progress>
+    </div>
+  );
+}
+
+//onclick - JS
+//onClick - React

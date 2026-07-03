@@ -1,4 +1,4 @@
-import { Counter } from "./Counter";
+import { Counter } from "../Counter";
 
 //conditonal rendering
 //ternary operator in JSX

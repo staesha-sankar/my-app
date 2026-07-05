@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Movie } from "./Movie";
 
 // Task: Create MovieList && Movie
@@ -9,7 +10,16 @@ import { Movie } from "./Movie";
 //5. map though the array of objects and pass the data to the movie component as props
 //smart
 export function MovieList() {
-  const movies = [
+  /* Your Code */
+
+  const [movie, setMovie] = useState({
+    name: "",
+    poster: "",
+    rating: "",
+    summary: "",
+  });
+
+  const [movieList, setMovieList] = useState([
     {
       name: "Vikram",
       poster:
@@ -95,15 +105,69 @@ export function MovieList() {
         "When Earth becomes uninhabitable in the future, a farmer and ex-NASA\\n pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\\n of researchers, to find a new planet for humans.",
       rating: 8.8,
     },
-  ];
+  ]);
+
+  function addMovie() {
+    setMovieList([...movieList, movie]);
+
+    setMovie({
+      name: "",
+      poster: "",
+      rating: "",
+      summary: "",
+    });
+  }
 
   return (
-    <section className="movie-list">
-      {movies.map(({ name, poster, summary, rating }) => (
-        <Movie name={name} poster={poster} summary={summary} rating={rating} />
-      ))}
-    </section>
-  );
+    <main>
+      {/* Your Code */}
+      <section>
+        <input
+          type="text"
+          placeholder="Name"
+          value={movie.name}
+          onChange={(event) => setMovie({ ...movie, name: event.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Poster"
+          value={movie.poster}
+          onChange={(event) =>
+            setMovie({ ...movie, poster: event.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Rating"
+          value={movie.rating}
+          onChange={(event) =>
+            setMovie({ ...movie, rating: event.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Summary"
+          value={movie.summary}
+          onChange={(event) =>
+            setMovie({ ...movie, summary: event.target.value })
+          }
+        />
+        <button onClick={addMovie}>
+          Add Movie
+        </button>
+      </section>
 
-  return movies.map((movie) => <Movie movie />);
+      <section className="movie-list">
+        {movieList.map(({ name, poster, summary, rating }) => (
+          <Movie
+            key={name}
+            name={name}
+            poster={poster}
+            summary={summary}
+            rating={rating}
+          />
+        ))}
+      </section>
+    </main>
+  );
 }

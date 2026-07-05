@@ -1,16 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { BrowserRouter } from "react-router";
 
 //import default
-import App from './App.jsx'
+import App from "./App.jsx";
 
-
-//Raect - strict mode - runs component twice
-//First run ouput == second ru out
-createRoot(document.getElementById('root')).render(
+//React - strict mode - runs component twice
+//First run output == second run output
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+);

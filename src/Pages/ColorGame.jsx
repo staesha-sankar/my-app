@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { ColorBox } from "./ColorBox";
+import { ColorBox } from "../Color Game/ColorBox";
 
 // Task - Clue: Hook & Conditional Styling
 //1. Change h1 to whatever what is typed in the input box
 //2. Change the color of the h1 based on the input
 // Task - Clue: Hook & Conditional Styling
+//React - model - view - sync
 export function ColorGame() {
   const [color, setColor] = useState("");
 

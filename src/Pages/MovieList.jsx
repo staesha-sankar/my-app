@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Movie } from "./Movie";
+import { Movie } from "../Movies/Movie";
 
 // Task: Create MovieList && Movie
 //Steps:
@@ -108,7 +108,7 @@ export function MovieList() {
   ]);
 
   function addMovie() {
-    setMovieList([...movieList, movie]);
+    setMovieList([movie, ...movieList]);
 
     setMovie({
       name: "",
@@ -152,9 +152,7 @@ export function MovieList() {
             setMovie({ ...movie, summary: event.target.value })
           }
         />
-        <button onClick={addMovie}>
-          Add Movie
-        </button>
+        <button onClick={addMovie}>Add Movie</button>
       </section>
 
       <section className="movie-list">

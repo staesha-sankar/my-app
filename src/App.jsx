@@ -12,11 +12,12 @@
 // Dont move multiple components at same time
 
 import "./index.css";
-import { MovieList } from "./Movies/MovieList";
-import { UserList } from "./Users/UserList";
+import { MovieList } from "./Pages/MovieList";
+import { UserList } from "./Pages/UserList";
 import { Counter } from "./Users/Counter";
-import { ColorGame } from "./Color Game/ColorGame";
-import { Routes, Route, NavLink } from "react-router";
+import { ColorGame } from "./Pages/ColorGame";
+import { Routes, Route, NavLink, Navigate } from "react-router";
+import { notFound } from "./Pages/notFound";
 
 // Default export (only one per file)
 export default function App() {
@@ -38,9 +39,14 @@ export default function App() {
       {/* Matching */}
       <Routes>
         <Route path="/" element={<h1>Home Page</h1>} />
+        {/* Redirection */}
+
+        <Route path="/films" element={<Navigate replace to="/movies" />} />
         <Route path="/movies" element={<MovieList />} />
         <Route path="/color-game" element={<ColorGame />} />
         <Route path="/users" element={<UserList />} />
+        {/*Special- if none matches | * - matches any*/}
+        <Route path="/*" element={notFound()} />
       </Routes>
 
       {/*<UserList />*/}

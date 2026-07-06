@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 // Separate into Components
 // 1. Move JSX
@@ -31,40 +32,39 @@ export function AddMovie({ movieList, setMovieList }) {
   }
 
   return (
-    <section>
-      <input
-        type="text"
-        placeholder="Name"
+    <section className = "add-movie-container">
+      <TextField
+        label="Name"
+        variant="outlined"
         value={movie.name}
         onChange={(event) => setMovie({ ...movie, name: event.target.value })}
       />
 
-      <input
-        type="text"
-        placeholder="Poster"
+      <TextField
+        label="Poster"
+        variant="outlined"
         value={movie.poster}
         onChange={(event) => setMovie({ ...movie, poster: event.target.value })}
       />
 
-      <input
+      <TextField
+        label="Rating"
+        variant="outlined"
         type="number"
-        placeholder="Rating"
         value={movie.rating}
         onChange={(event) => setMovie({ ...movie, rating: event.target.value })}
       />
 
-      <input
-        type="text"
-        placeholder="Summary"
+      <TextField
+        label="Summary"
+        variant="outlined"
         value={movie.summary}
         onChange={(event) =>
           setMovie({ ...movie, summary: event.target.value })
         }
       />
 
-      <button onClick={addMovie}>Add Movie</button>
-
-      <Button variant="contained">Hello world</Button>
+      <Button variant="contained" onClick={addMovie}>Add Movie</Button>
     </section>
   );
 }

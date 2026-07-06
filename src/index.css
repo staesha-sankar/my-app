@@ -71,3 +71,10 @@ nav ul {
   margin: 0;
 }
 
+.add-movie-container
+{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+

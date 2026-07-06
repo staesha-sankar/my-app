@@ -22,7 +22,6 @@ import { useState } from "react";
 import { INITIAL_MOVIES } from "./Movies/INITIAL_MOVIES";
 import { AddMovie } from "./Pages/AddMovie";
 
-
 // Default export (only one per file)
 export default function App() {
   const names = ["Staesha", "Lauren", "Zulu", "Nolo"];
@@ -64,7 +63,12 @@ export default function App() {
 
         <Route path="/films" element={<Navigate replace to="/movies" />} />
         <Route path="/movies" element={<MovieList movieList={movieList} />} />
-        <Route path="/movies/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
+        <Route
+          path="/movies/add"
+          element={
+            <AddMovie movieList={movieList} setMovieList={setMovieList} />
+          }
+        />
         <Route path="/color-game" element={<ColorGame />} />
         <Route path="/users" element={<UserList />} />
         {/*Special- if none matches | * - matches any*/}

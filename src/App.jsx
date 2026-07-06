@@ -18,23 +18,44 @@ import { Counter } from "./Users/Counter";
 import { ColorGame } from "./Pages/ColorGame";
 import { Routes, Route, NavLink, Navigate } from "react-router";
 import { notFound } from "./Pages/notFound";
+import { useState } from "react";
+import { INITIAL_MOVIES } from "./Movies/INITIAL_MOVIES";
+import { AddMovie } from "./Pages/AddMovie";
+
 
 // Default export (only one per file)
 export default function App() {
   const names = ["Staesha", "Lauren", "Zulu", "Nolo"];
   // Array Strings -> Array of JSX (Transform)
 
+  const [movieList, setMovieList] = useState(INITIAL_MOVIES);
   return (
     // JSX starts
     <div className="App">
       <h2>Welcome to the App</h2>
 
       {/* Navigation */}
-      <nav className="nav-bar">
-        <NavLink to="/movies">Movies</NavLink>
-        <NavLink to="/color-game">Color Game</NavLink>
-        <NavLink to="/users">Users</NavLink>
-      </nav>
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/"> Home </NavLink>
+            </li>
+            <li>
+              <NavLink to="/movies"> Movies </NavLink>
+            </li>
+            <li>
+              <NavLink to="/movies/add"> Add Movie </NavLink>
+            </li>
+            <li>
+              <NavLink to="/color-game"> Color Game </NavLink>
+            </li>
+            <li>
+              <NavLink to="/users"> Users </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
       {/* Matching */}
       <Routes>
@@ -42,7 +63,8 @@ export default function App() {
         {/* Redirection */}
 
         <Route path="/films" element={<Navigate replace to="/movies" />} />
-        <Route path="/movies" element={<MovieList />} />
+        <Route path="/movies" element={<MovieList movieList={movieList} />} />
+        <Route path="/movies/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
         <Route path="/color-game" element={<ColorGame />} />
         <Route path="/users" element={<UserList />} />
         {/*Special- if none matches | * - matches any*/}

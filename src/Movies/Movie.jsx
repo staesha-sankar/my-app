@@ -1,20 +1,27 @@
 import { useState } from "react";
 import { MovieCounter } from "./MovieCounter";
+import { useNavigate } from "react-router";
 
 // // //presentation
 
 // // // Task 2.1
 // // // If rating is 8 or more (green) otherwise (red)
 // // //presentation
-export function Movie({ name, poster, summary, rating }) {
+
+// Task 1.1 - Info -> /movies/0 or /movies/1 ... depending movie clicked
+export function Movie({id, name, poster, summary, rating}) {
   const [showSummary, setShowSummary] = useState(true);
+
+  //navigate is a function
+  const navigate = useNavigate();
+
   const style = {
     color: rating >= 8 ? "green" : "red",
   };
 
   const summaryStyle = {
     display: showSummary ? "block" : "none",
-  }
+  };
 
   return (
     <section className="movie-container">
@@ -29,11 +36,9 @@ export function Movie({ name, poster, summary, rating }) {
         <button onClick={() => setShowSummary(!showSummary)}>
           💡 Toggle Summary
         </button>
+        <button onClick={() => navigate(`/movies/${id}`)}>ℹ️ Info</button>
         {/* Conditional styling - remains in DOM*/}
-        <p
-          className="movie-summary"
-          style={summaryStyle}
-        >
+        <p className="movie-summary" style={summaryStyle}>
           {summary}
         </p>
 
@@ -46,7 +51,6 @@ export function Movie({ name, poster, summary, rating }) {
     </section>
   );
 }
-
 
 // import { useState } from "react";
 // import { MovieCounter } from "./MovieCounter";

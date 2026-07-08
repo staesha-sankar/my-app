@@ -1,10 +1,9 @@
 // Prop name
 // Presentation - Reusability ⬆️
 
-import {Counter} from "./Counter";
+import { Counter } from "../Concepts/Counter";
 
-
-//more control over counter 
+//more control over counter
 export function User({ name, pic }) {
   return (
     <div className="user-container">
@@ -12,9 +11,7 @@ export function User({ name, pic }) {
       <p className="user-msg">
         Hello, <span className="user-name">{name} 🎉</span>
       </p>
-       <Counter />;
+      <Counter />;
     </div>
   );
-
- 
 }

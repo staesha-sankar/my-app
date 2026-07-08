@@ -12,20 +12,18 @@ import { AddMovie } from "./AddMovie";
 //5. map though the array of objects and pass the data to the movie component as props
 //smart
 
-export function MovieList({movieList}) {
+export function MovieList({ movieList }) {
   /* Your Code */
-
-  
 
   return (
     <main>
       {/* Your Code */}
-      
 
       <section className="movie-list">
-        {movieList.map(({ name, poster, summary, rating }) => (
+        {movieList.map(({ name, poster, summary, rating }, index) => (
           <Movie
-            key={name}
+            key={index} //makes diffing faster
+            id={index}
             name={name}
             poster={poster}
             summary={summary}

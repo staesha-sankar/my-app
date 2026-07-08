@@ -1,4 +1,4 @@
-import { Counter } from  "../Concepts/SchedulingCounter"
+import { Counter } from  "../Concepts/UseEffect"
 
 export function Home() {
   return (

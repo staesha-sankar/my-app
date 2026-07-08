@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 // // //presentation
 
 // Task 1.1 - Info -> /movies/0 or /movies/1 ... depending movie clicked
-export function Movie({id, name, poster, summary, rating}) {
+export function Movie({ id, name, poster, summary, rating, deleteBtn }) {
   const [showSummary, setShowSummary] = useState(true);
 
   //navigate is a function
@@ -23,6 +23,7 @@ export function Movie({id, name, poster, summary, rating}) {
     display: showSummary ? "block" : "none",
   };
 
+  
   return (
     <section className="movie-container">
       <img src={poster} alt="" />
@@ -47,6 +48,8 @@ export function Movie({id, name, poster, summary, rating}) {
         {/* showSummary ? <p className="movie-summary">{summary}</p> : null */}
 
         <MovieCounter />
+
+        {deleteBtn}
       </div>
     </section>
   );

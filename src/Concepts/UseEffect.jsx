@@ -17,6 +17,39 @@ export function Counter() {
     console.log("Like updated");
   }, [disLike]);
 
+   // Better - ✅ - Explicitly
+  useEffect(() => {
+    console.log("2. Component updated");
+  }, [like, disLike]);
+
+  // ComponentDidMount - Re-routing / Conditional rending
+  // Only on mount - After they don't run
+  // useEffect(() => {
+  //   console.log("0. Mounted");
+  // }, []);
+
+  // ComponentDidUpdate
+
+  // Component Mount - all useEffect will run on mount
+  // useEffect(() => {
+  //   console.log("1. log");
+  // }, [disLike]);
+
+  // // Component Mount
+  // useEffect(() => {
+  //   console.log("2. log");
+  // }, [like, disLike]);
+
+  // useEffect(() => {
+  //   console.log("Mounted");
+
+  //   // Component Mount && Unmounting
+  //   return () => {
+  //     console.log("Unmounting");
+  //   };
+  // }, []);
+
+
   //Scheduled - like - 0
   //Render - like - 3
   const incrementLike = () => {
